@@ -1,6 +1,12 @@
-from envparse import Env
+from dotenv import load_dotenv
+from pydantic import BaseSettings, Field
+
+load_dotenv(dotenv_path="../")
 
 
-env = Env()
+class Settings(BaseSettings):
+    database_url: str = Field(env="DATABASE_URL")
 
-DATABASE_URL = "postgresql+asyncpg://postgres:postgres@postgres:5432/education"
+    class Config:
+        env_file = "../.env"
+

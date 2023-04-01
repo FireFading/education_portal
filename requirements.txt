@@ -5,4 +5,4 @@ asyncpg
 alembic
 uvicorn
 pydantic
-envparse
+python_dotenv
