@@ -6,8 +6,11 @@ sqlalchemy_utils
 psycopg2-binary
 asyncpg
 alembic
+httpx
 uvicorn
 pydantic[email]
 python_dotenv
 pytest
+pytest_mock
 pytest_asyncio
+aiosqlite
