@@ -1,8 +1,8 @@
 import asyncio
 from logging.config import fileConfig
+
+from sqlalchemy import create_engine, engine_from_config, pool
 from sqlalchemy.engine import Connection
-from sqlalchemy import engine_from_config, create_engine
-from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from app.models.users import *

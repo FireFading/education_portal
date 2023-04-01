@@ -16,5 +16,4 @@ COPY ./alembic.ini ./
 COPY ./migrations ./migrations
 COPY ./app ./app
 
-# RUN alembic revision --autogenerate
 CMD ["alembic", "upgrade", "head"]
