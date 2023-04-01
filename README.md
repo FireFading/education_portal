@@ -1,3 +1,5 @@
+## before run
+- change .env.example to .env AND also in the project settings, don't forget about tests folder
 ## run project
 - `docker compose up --build` OR `make up`
 
