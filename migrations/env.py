@@ -5,7 +5,7 @@ from sqlalchemy import engine_from_config, create_engine
 from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import AsyncEngine
 
-from app.models import *  # necessarily to import something from file where models are stored
+from app.models.users import *
 from alembic import context
 from app.config import settings
 
@@ -19,7 +19,6 @@ if config.config_file_name is not None:
 
 config.set_section_option("alembic", "sqlalchemy.url", settings.database_url)
 
-from app.database import Base
 target_metadata = Base.metadata
 
 
