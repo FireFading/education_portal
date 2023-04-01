@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from pydantic import BaseSettings, Field
 
-load_dotenv(dotenv_path="../")
+load_dotenv(dotenv_path="../.env")
 
 
 class Settings(BaseSettings):

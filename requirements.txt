@@ -1,8 +1,11 @@
 fastapi
+fastapi_pagination
+stackprinter
 sqlalchemy
-psycopg2
+sqlalchemy_utils
+psycopg2-binary
 asyncpg
 alembic
 uvicorn
-pydantic
+pydantic[email]
 python_dotenv

@@ -1,17 +1,19 @@
 import asyncio
 from logging.config import fileConfig
 from sqlalchemy.engine import Connection
-from sqlalchemy import engine_from_config
+from sqlalchemy import engine_from_config, create_engine
 from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import AsyncEngine
 
-from app.models import *
+from app.models import *  # necessarily to import something from file where models are stored
 from alembic import context
 from app.config import settings
 
 
 config = context.config
 
+# Interpret the config file for Python logging.
+# This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
@@ -59,14 +61,7 @@ async def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
-    connectable = AsyncEngine(
-        engine_from_config(
-            config.get_section(config.config_ini_section),
-            prefix="sqlalchemy.",
-            poolclass=pool.NullPool,
-            future=True,
-        )
-    )
+    connectable = AsyncEngine(create_engine(settings.database_url, echo=True, future=True))
 
     async with connectable.connect() as connection:
         await connection.run_sync(do_run_migrations)
@@ -77,4 +72,4 @@ async def run_migrations_online() -> None:
 if context.is_offline_mode():
     run_migrations_offline()
 else:
-    run_migrations_online()
+    asyncio.run(run_migrations_online())
