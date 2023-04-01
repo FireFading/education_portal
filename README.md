@@ -1,4 +1,11 @@
-connect to postgres: `docker exec -it postgres psql -U postgres`
+## run project
+- `docker compose up --build` OR `make up`
+
+## down docker
+- `docker compose down && docker network prune --force` OR `make down`
+
+## database
+- connect to postgres: `docker exec -it postgres psql -U postgres`
 
 ## migrations
 - apply migrations: `alembic upgrade head` in fastapi container

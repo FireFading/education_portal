@@ -11,6 +11,8 @@ services:
       - .env
     volumes:
       - .:/code
+    networks:
+      - custom
     depends_on:
       postgres:
         condition: service_healthy
@@ -26,7 +28,13 @@ services:
       test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
     volumes:
       - postgres_data:/var/lib/postgresql/data:cached
+    networks:
+      - custom
 
 
 volumes:
   postgres_data:
+
+networks:
+  custom:
+    driver: bridge
