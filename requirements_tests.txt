@@ -1,0 +1,10 @@
+fastapi
+fastapi_pagination
+stackprinter
+sqlalchemy
+sqlalchemy_utils
+uvicorn
+pydantic[email]
+python_dotenv
+pytest
+pytest_asyncio

@@ -24,3 +24,9 @@ def lint(session: nox.Session) -> None:
     #     "--config-file=configs/.mypy.ini",
     #     "app"
     # )
+
+
+@nox.session
+def run_tests(session: nox.Session) -> None:
+    session.install("-r", "requirement_test.txt")
+    session.run("pytest", "./tests")

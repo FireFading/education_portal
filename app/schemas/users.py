@@ -16,7 +16,7 @@ class CreateUser(BaseModel):
     def validate_name_fields(cls, value):
         if not re.match(pattern=LETTER_NAME_PATTERN, string=value):
             raise HTTPException(
-                status=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
                 detail="Name should contains only letters",
             )
         return value

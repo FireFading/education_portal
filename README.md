@@ -18,3 +18,6 @@
 - run flake8: `flake8 --config=configs/.flake8 app`
 
 - OR `nox` in root
+
+## run tests
+- `pytest .` OR `pytest ./tests` OR run `nox`
