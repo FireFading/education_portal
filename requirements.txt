@@ -1,4 +1,5 @@
 fastapi
+bcrypt
 fastapi_pagination
 stackprinter
 sqlalchemy

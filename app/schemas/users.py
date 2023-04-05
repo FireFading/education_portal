@@ -10,6 +10,7 @@ from app.schemas.base import LETTER_NAME_PATTERN, CustomConfig
 class CreateUser(BaseModel):
     name: str
     surname: str
+    password: str
     email: EmailStr
 
     @validator("name", "surname")
@@ -28,3 +29,8 @@ class ShowUser(CustomConfig):
     surname: str
     email: EmailStr
     is_active: bool
+
+
+class LoginCredentials(BaseModel):
+    email: str
+    password: str

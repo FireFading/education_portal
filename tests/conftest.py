@@ -6,13 +6,13 @@ import pytest_asyncio
 
 from app.database import Base, get_session
 from app.main import app as main_app
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from tests.config import settings
+from tests.config import settings, test_user
 
 
 engine = create_async_engine(
@@ -59,3 +59,9 @@ async def db_session(app: FastAPI) -> AsyncGenerator:
     await session.close()
     await transaction.rollback()
     await connection.close()
+
+
+@pytest_asyncio.fixture
+async def register_user(client: AsyncGenerator | TestClient) -> AsyncGenerator:
+    response = client.post("/users/register", json=test_user)
+    assert response.status_code == status.HTTP_201_CREATED
