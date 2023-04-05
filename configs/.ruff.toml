@@ -32,7 +32,7 @@ select = [
 ]
 
 # RUF100 - Remove unused `noqa` directive
-ignore = ["RUF100", "A003"]
+ignore = ["RUF100", "A003", "S105"]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["C40", "I"]
